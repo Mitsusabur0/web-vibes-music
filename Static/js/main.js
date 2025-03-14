@@ -85,6 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize gallery
     initGallery();
 
+    // Initialize lightbox
+    initLightbox();
+
     // Gallery category filtering
     const categoryButtons = document.querySelectorAll('.category-btn');
     if (categoryButtons.length > 0) {
@@ -124,6 +127,112 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
             galleryScroller.appendChild(galleryItem);
+        });
+    }
+
+    /**
+     * Initialize lightbox functionality
+     */
+    function initLightbox() {
+        const lightbox = document.getElementById('image-lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxTitle = document.getElementById('lightbox-title');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const prevButton = document.querySelector('.lightbox-nav.prev');
+        const nextButton = document.querySelector('.lightbox-nav.next');
+        const body = document.body;
+        
+        let currentIndex = 0;
+        let visibleItems = [];
+
+        // Update the visible items based on current filtering
+        function updateVisibleItems() {
+            visibleItems = [];
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach((item, index) => {
+                if (item.style.display !== 'none') {
+                    visibleItems.push({
+                        index: index,
+                        element: item,
+                        img: item.querySelector('img').src,
+                        title: item.querySelector('h3').textContent
+                    });
+                }
+            });
+        }
+
+        // Add click event to each gallery item
+        document.addEventListener('click', function(e) {
+            const galleryItem = e.target.closest('.gallery-item');
+            if (galleryItem) {
+                // Update visible items first
+                updateVisibleItems();
+                
+                // Find the clicked item in the visible items
+                const itemIndex = Array.from(document.querySelectorAll('.gallery-item')).indexOf(galleryItem);
+                
+                // Find its position in the visibleItems array
+                const visibleIndex = visibleItems.findIndex(item => item.index === itemIndex);
+                
+                if (visibleIndex !== -1) {
+                    currentIndex = visibleIndex;
+                    openLightbox();
+                }
+            }
+        });
+
+        // Open lightbox with current image
+        function openLightbox() {
+            if (visibleItems.length === 0) return;
+            
+            const current = visibleItems[currentIndex];
+            lightboxImg.src = current.img;
+            lightboxImg.alt = current.title;
+            lightboxTitle.textContent = current.title;
+            
+            lightbox.style.display = 'block';
+            body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+        }
+
+        // Close lightbox
+        lightboxClose.addEventListener('click', function() {
+            lightbox.style.display = 'none';
+            body.style.overflow = ''; // Re-enable scrolling
+        });
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.style.display === 'block') {
+                lightbox.style.display = 'none';
+                body.style.overflow = '';
+            }
+        });
+
+        // Navigate to previous image
+        prevButton.addEventListener('click', function() {
+            if (visibleItems.length <= 1) return;
+            
+            currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+            openLightbox();
+        });
+
+        // Navigate to next image
+        nextButton.addEventListener('click', function() {
+            if (visibleItems.length <= 1) return;
+            
+            currentIndex = (currentIndex + 1) % visibleItems.length;
+            openLightbox();
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display !== 'block') return;
+            
+            if (e.key === 'ArrowLeft') {
+                prevButton.click();
+            } else if (e.key === 'ArrowRight') {
+                nextButton.click();
+            }
         });
     }
 

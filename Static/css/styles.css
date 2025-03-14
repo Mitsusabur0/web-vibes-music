@@ -283,6 +283,7 @@ img {
     border-radius: 8px;
     overflow: hidden;
     position: relative;
+    cursor: pointer;
 }
 
 .gallery-item img {
@@ -309,6 +310,89 @@ img {
 
 .gallery-item:hover .gallery-item-info {
     transform: translateY(0);
+}
+
+/* ===== LIGHTBOX STYLES ===== */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+}
+
+.lightbox-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100vh;
+    margin: auto;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    color: var(--text-light);
+    cursor: pointer;
+    z-index: 2001;
+    transition: var(--transition);
+}
+
+.lightbox-close:hover {
+    color: var(--accent-color);
+}
+
+#lightbox-img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border: 2px solid var(--overlay-light);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-caption {
+    color: var(--text-light);
+    padding: 1rem;
+    text-align: center;
+    max-width: 80%;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    border: none;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--accent-color);
+}
+
+.lightbox-nav.prev {
+    left: 20px;
+}
+
+.lightbox-nav.next {
+    right: 20px;
 }
 
 /* ===== VIDEOS PAGE ===== */
@@ -530,6 +614,16 @@ img {
     .bio-page {
         background-image: url('/Media/images/mobile/background_mobile.jpg');
     }
+    
+    #lightbox-img {
+        max-width: 95%;
+        max-height: 70vh;
+    }
+    
+    .lightbox-nav {
+        font-size: 18px;
+        padding: 10px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -555,5 +649,14 @@ img {
     .video-item h3,
     .music-item h3 {
         font-size: 1.5rem;
+    }
+    
+    .lightbox-nav {
+        font-size: 16px;
+        padding: 8px;
+    }
+    
+    .lightbox-close {
+        font-size: 28px;
     }
 }

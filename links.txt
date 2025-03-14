@@ -1,0 +1,24 @@
+Socials:
+https://www.instagram.com/bives.mp3/
+https://www.youtube.com/channel/UCIbGfi64LMCAx41w2G6Bcbw
+https://open.spotify.com/artist/2z56uAB5zLrQXs2lIUnxNt
+
+Videos:
+-Misery and the mend: 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rcFxojbeQHA?si=1jiGKT5sKccXxqnn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+-Rafiqi Live at EastWest Studios: 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BdA19tzehLc?si=J1nwJerDkR6PKJ5r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Music:
+-Misery and the mend
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/70ogw1NKKOwiwG8KB1XOak?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+-The fall off:
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1wkabSJ81QsYG14vYfn6i8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+-Rafiqi
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7BXfAP07qdWw4hlUGqwCIs?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+
+
+
+
+

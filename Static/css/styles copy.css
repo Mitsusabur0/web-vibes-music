@@ -8,7 +8,7 @@
     --text-light: #f5f5f5;
     --text-dark: #262626;
     --transition: all 0.3s ease;
-    --overlay-dark: rgba(0, 0, 0, 0.7);
+    --overlay-dark: rgba(0, 0, 0, 0.6);
     --overlay-light: rgba(255, 255, 255, 0.1);
 }
 
@@ -175,11 +175,12 @@ img {
 }
 
 .home-page {
-    background-image: url('/Media/images/desktop/background_desktop.jpg');
+    background-image: url('../../Media/images/desktop/background_desktop.jpg');
 }
 
 .bio-page {
-    background-image: url('/Media/images/desktop/background_bio_desktop.jpg');
+    background-image: url('../../Media/images/desktop/background_desktop.jpg');
+    background-image: url('../../Media/images/desktop/background_bio_desktop.jpg');
 }
 
 /* ===== HOME PAGE ===== */
@@ -327,19 +328,11 @@ img {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.video-item {
-    width: 100%;
-    margin: 0 auto;
 }
 
 .video-item h3 {
     margin-bottom: 1rem;
     font-size: 1.8rem;
-    text-align: center;
 }
 
 .video-wrapper {
@@ -349,7 +342,6 @@ img {
     height: 0;
     overflow: hidden;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .video-wrapper iframe {
@@ -359,13 +351,6 @@ img {
     width: 100%;
     height: 100%;
     border: none;
-}
-
-/* Responsive adjustments for videos */
-@media (max-width: 768px) {
-    .video-item {
-        width: 90%;
-    }
 }
 
 /* ===== MUSIC PAGE ===== */
@@ -384,32 +369,16 @@ img {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.music-item {
-    width: 70%;
-    margin: 0 auto;
 }
 
 .music-item h3 {
     margin-bottom: 1rem;
     font-size: 1.8rem;
-    text-align: center;
 }
 
 .spotify-wrapper {
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-/* Responsive adjustments for music players */
-@media (max-width: 768px) {
-    .music-item {
-        width: 90%;
-    }
 }
 
 .music-platforms {
@@ -524,11 +493,11 @@ img {
     }
 
     .home-page {
-        background-image: url('/Media/images/mobile/background_mobile.jpg');
+        background-image: url('../../Media/images/mobile/background_mobile.jpg');
     }
 
     .bio-page {
-        background-image: url('/Media/images/mobile/background_mobile.jpg');
+        background-image: url('../../Media/images/mobile/background_mobile.jpg');
     }
 }
 

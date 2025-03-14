@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 2,
-            src: '/Media/images/desktop/gallery/2.jpg',
+            src: '../Media/images/desktop/gallery/2.jpg',
             alt: 'Bives in studio session',
             category: 'studio',
             title: 'Recording Misery and the Mend'

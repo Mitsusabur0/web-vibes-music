@@ -1,11 +1,170 @@
+<!-- Templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bives</title>
+    <title>Bives | Official Website</title>
+    <meta name="description" content="Bives - An electrifying indie pop-rock band from Los Angeles">
+    <link rel="stylesheet" href="../Static/css/styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>We are Bives.</h1>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="logo">
+                <a href="#home">
+                    <img src="../Media/images/logo/logo_white.png" alt="Bives Logo" class="logo-img">
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation Menu -->
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#bio" class="nav-link">Bio</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#videos" class="nav-link">Videos</a></li>
+                <li><a href="#music" class="nav-link">Music</a></li>
+            </ul>
+            
+            <!-- Social Media Links -->
+            <div class="social-links">
+                <a href="https://www.instagram.com/bives.mp3/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/channel/UCIbGfi64LMCAx41w2G6Bcbw" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://open.spotify.com/artist/2z56uAB5zLrQXs2lIUnxNt" target="_blank" aria-label="Spotify">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="#" target="_blank" aria-label="Apple Music">
+                    <i class="fab fa-apple"></i>
+                </a>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Sections -->
+    <main>
+        <!-- Home/Landing Page -->
+        <section id="home" class="page home-page">
+            <div class="page-content">
+                <h1 class="main-title">We are Bives.</h1>
+            </div>
+        </section>
+
+        <!-- Bio/About Page -->
+        <section id="bio" class="page bio-page">
+            <div class="page-content">
+                <div class="bio-container">
+                    <h2>About Us</h2>
+                    <div class="bio-text">
+                        <p>Bives breaks out onto the music scene with an electrifyingly new indie pop-rock sound. Based in Los Angeles, they seamlessly move between exhilarating energy and heartfelt intimacy, always infused with an irresistible and danceable groove. Drawing comparisons to Glass Animals, The Neighborhood, Arctic Monkeys, and Gorillaz; Bives is bringing original and exciting vibes to 2025.</p>
+                        <p>Tomás, Elias, and Miles all moved to Los Angeles in the fall of 2019 where they met in their dorm building's communal kitchen. Miles and Elias attended the same high school, but had never met prior to becoming roommates. In 2021, Tomás and Elias moved in together which led to them co-writing and recording demos of multiple songs which would later constitute the band's EP. Liam had met Elias during high school in 2015 through the Bay Area music scene, and joined the band after moving in with Elias in early 2023.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery -->
+        <section id="gallery" class="page gallery-page">
+            <div class="page-content">
+                <h2>Gallery</h2>
+                <div class="gallery-categories">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="outdoor">Outdoor Performances</button>
+                    <button class="category-btn" data-category="studio">Studio Sessions</button>
+                </div>
+                <div class="gallery-container">
+                    <div class="gallery-scroller">
+                        <!-- Gallery images will be populated here via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Videos Section -->
+        <section id="videos" class="page videos-page">
+            <div class="page-content">
+                <h2>Videos</h2>
+                <div class="videos-container">
+                    <div class="video-item">
+                        <h3>Misery and the Mend</h3>
+                        <div class="video-wrapper">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/rcFxojbeQHA?si=1jiGKT5sKccXxqnn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="video-item">
+                        <h3>Rafiqi Live at EastWest Studios</h3>
+                        <div class="video-wrapper">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/BdA19tzehLc?si=J1nwJerDkR6PKJ5r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Music Section -->
+        <section id="music" class="page music-page">
+            <div class="page-content">
+                <h2>Music</h2>
+                <div class="music-container">
+                    <div class="music-item">
+                        <h3>Misery and the Mend</h3>
+                        <div class="spotify-wrapper">
+                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/70ogw1NKKOwiwG8KB1XOak?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="music-item">
+                        <h3>The Fall Off</h3>
+                        <div class="spotify-wrapper">
+                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1wkabSJ81QsYG14vYfn6i8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="music-item">
+                        <h3>Rafiqi</h3>
+                        <div class="spotify-wrapper">
+                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7BXfAP07qdWw4hlUGqwCIs?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                    <div class="music-platforms">
+                        <h3>Listen on Other Platforms</h3>
+                        <div class="platform-links">
+                            <a href="https://open.spotify.com/artist/2z56uAB5zLrQXs2lIUnxNt" target="_blank" class="platform-link">
+                                <i class="fab fa-spotify"></i> Spotify
+                            </a>
+                            <a href="#" target="_blank" class="platform-link">
+                                <i class="fab fa-apple"></i> Apple Music
+                            </a>
+                            <a href="#" target="_blank" class="platform-link">
+                                <i class="fab fa-youtube"></i> YouTube Music
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Bives Music</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../Static/js/main.js"></script>
 </body>
 </html>

@@ -13,35 +13,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const galleryItems = [
         {
             id: 1,
-            src: '../Media/images/desktop/gallery/1.jpg',
+            src: '/Media/images/desktop/gallery/1.jpg',
             alt: 'Bives performing outdoors',
             category: 'outdoor',
             title: 'Summer Festival 2024'
         },
         {
             id: 2,
-            src: '../Media/images/desktop/gallery/2.jpg',
+            src: '/Media/images/desktop/gallery/2.jpg',
             alt: 'Bives in studio session',
             category: 'studio',
             title: 'Recording Misery and the Mend'
         },
         {
             id: 3,
-            src: '../Media/images/desktop/gallery/3.jpg',
+            src: '/Media/images/desktop/gallery/3.jpg',
             alt: 'Bives outdoor concert',
             category: 'outdoor',
             title: 'LA Music Festival'
         },
         {
             id: 4,
-            src: '../Media/images/desktop/gallery/4.jpg',
+            src: '/Media/images/desktop/gallery/4.jpg',
             alt: 'Bives in the studio',
             category: 'studio',
             title: 'EastWest Studios Session'
         },
         {
             id: 5,
-            src: '../Media/images/desktop/gallery/5.jpg',
+            src: '/Media/images/desktop/gallery/5.jpg',
             alt: 'Bives performing live',
             category: 'outdoor',
             title: 'Venice Beach Concert'

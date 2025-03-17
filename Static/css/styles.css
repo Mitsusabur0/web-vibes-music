@@ -691,6 +691,7 @@ section {
 
     .home-page {
         background-image: url('/Media/images/mobile/background_mobile.jpg');
+        /* background-image: url('/Media/images/desktop/background_bio_desktop.jpg'); */
     }
 
     .bio-page {

@@ -76,17 +76,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Active navigation link based on scroll position
-    window.addEventListener('scroll', debounce(updateActiveNavLink));
+    // Initialize gallery if on gallery page
+    if (document.querySelector('.gallery-scroller')) {
+        initGallery();
+    }
 
-    // Initial call to set active link
-    updateActiveNavLink();
-
-    // Initialize gallery
-    initGallery();
-
-    // Initialize lightbox
-    initLightbox();
+    // Initialize lightbox if on gallery page
+    if (document.getElementById('image-lightbox')) {
+        initLightbox();
+    }
 
     // Gallery category filtering
     const categoryButtons = document.querySelectorAll('.category-btn');
@@ -140,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const lightboxClose = document.querySelector('.lightbox-close');
         const prevButton = document.querySelector('.lightbox-nav.prev');
         const nextButton = document.querySelector('.lightbox-nav.next');
-        const body = document.body;
         
         let currentIndex = 0;
         let visibleItems = [];
@@ -195,42 +192,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Close lightbox
-        lightboxClose.addEventListener('click', function() {
-            lightbox.style.display = 'none';
-            body.style.overflow = ''; // Re-enable scrolling
-        });
+        if (lightboxClose) {
+            lightboxClose.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+                body.style.overflow = ''; // Re-enable scrolling
+            });
+        }
 
         // Close lightbox with Escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && lightbox.style.display === 'block') {
+            if (e.key === 'Escape' && lightbox && lightbox.style.display === 'block') {
                 lightbox.style.display = 'none';
                 body.style.overflow = '';
             }
         });
 
         // Navigate to previous image
-        prevButton.addEventListener('click', function() {
-            if (visibleItems.length <= 1) return;
-            
-            currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
-            openLightbox();
-        });
+        if (prevButton) {
+            prevButton.addEventListener('click', function() {
+                if (visibleItems.length <= 1) return;
+                
+                currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+                openLightbox();
+            });
+        }
 
         // Navigate to next image
-        nextButton.addEventListener('click', function() {
-            if (visibleItems.length <= 1) return;
-            
-            currentIndex = (currentIndex + 1) % visibleItems.length;
-            openLightbox();
-        });
+        if (nextButton) {
+            nextButton.addEventListener('click', function() {
+                if (visibleItems.length <= 1) return;
+                
+                currentIndex = (currentIndex + 1) % visibleItems.length;
+                openLightbox();
+            });
+        }
 
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
-            if (lightbox.style.display !== 'block') return;
+            if (!lightbox || lightbox.style.display !== 'block') return;
             
-            if (e.key === 'ArrowLeft') {
+            if (e.key === 'ArrowLeft' && prevButton) {
                 prevButton.click();
-            } else if (e.key === 'ArrowRight') {
+            } else if (e.key === 'ArrowRight' && nextButton) {
                 nextButton.click();
             }
         });
@@ -253,49 +256,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /**
-     * Update active navigation link based on scroll position
+     * Set active navigation based on current page
+     * This replaces the scroll-based active nav functionality
      */
-    function updateActiveNavLink() {
-        // Get all sections
-        const sections = document.querySelectorAll('section.page');
+    function setActiveNavLink() {
+        // Get current page filename
+        const currentPage = window.location.pathname.split('/').pop();
         
-        // Get current scroll position
-        const scrollY = window.pageYOffset;
+        // Remove active class from all links
+        navLinks.forEach(link => link.classList.remove('active'));
         
-        // Loop through sections and get the current section
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                // Remove active class from all links
-                navLinks.forEach(link => link.classList.remove('active'));
-                
-                // Add active class to current link
-                const currentLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-                if (currentLink) {
-                    currentLink.classList.add('active');
+        // Set active class based on current page
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href');
+            // Handle index page special case
+            if (currentPage === '' || currentPage === '/' || currentPage === 'index.html') {
+                if (linkPage === 'index.html') {
+                    link.classList.add('active');
                 }
+            } 
+            // For other pages
+            else if (linkPage === currentPage) {
+                link.classList.add('active');
             }
         });
     }
 
-    /**
-     * Debounce function to limit function calls
-     * @param {Function} func - The function to debounce
-     * @param {number} wait - The debounce wait time
-     * @returns {Function} - Debounced function
-     */
-    function debounce(func, wait = 20) {
-        let timeout;
-        return function() {
-            const context = this;
-            const args = arguments;
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                func.apply(context, args);
-            }, wait);
-        };
-    }
+    // Set active nav link based on current page
+    setActiveNavLink();
 });

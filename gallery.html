@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bives | Official Website</title>
-    <meta name="description" content="Bives - An electrifying indie pop-rock band from Los Angeles">
+    <title>Gallery | Bives</title>
+    <meta name="description" content="View photos of Bives - An electrifying indie pop-rock band from Los Angeles">
     <link rel="stylesheet" href="/Static/css/styles.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -28,9 +28,9 @@
             
             <!-- Desktop Navigation Menu -->
             <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="index.html" class="nav-link">Home</a></li>
                 <li><a href="bio.html" class="nav-link">Bio</a></li>
-                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
                 <li><a href="videos.html" class="nav-link">Videos</a></li>
                 <li><a href="music.html" class="nav-link">Music</a></li>
             </ul>
@@ -62,10 +62,21 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Home/Landing Page -->
-        <section class="home-page">
+        <!-- Photo Gallery -->
+        <section class="gallery-page">
             <div class="page-content">
-                <h1 class="main-title">Bives.</h1>
+                <h2>Gallery</h2>
+                <div class="gallery-categories">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="outdoor">Outdoor Performances</button>
+                    <button class="category-btn" data-category="studio">Studio Sessions</button>
+                </div>
+                <div class="gallery-container">
+                    <div class="gallery-scroller">
+                        <!-- Gallery images will be populated here via JavaScript -->
+                        <!-- The horizontal scrolling layout has been restored -->
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -76,6 +87,19 @@
             <p>&copy; 2025 Bives Music</p>
         </div>
     </footer>
+
+    <!-- Lightbox Modal for Gallery Images -->
+    <div id="image-lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img id="lightbox-img" src="" alt="Enlarged gallery image">
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title"></h3>
+            </div>
+            <button class="lightbox-nav prev" aria-label="Previous image">&lt;</button>
+            <button class="lightbox-nav next" aria-label="Next image">&gt;</button>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="/Static/js/main.js"></script>

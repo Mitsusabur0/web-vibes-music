@@ -86,6 +86,11 @@ document.addEventListener('DOMContentLoaded', function() {
         initLightbox();
     }
 
+    // Initialize carousels if on videos or music page
+    if (document.querySelector('.videos-carousel') || document.querySelector('.music-carousel')) {
+        initCarousels();
+    }
+
     // Gallery category filtering
     const categoryButtons = document.querySelectorAll('.category-btn');
     if (categoryButtons.length > 0) {
@@ -236,6 +241,81 @@ document.addEventListener('DOMContentLoaded', function() {
             } else if (e.key === 'ArrowRight' && nextButton) {
                 nextButton.click();
             }
+        });
+    }
+
+    /**
+     * Initialize carousel functionality for videos and music pages
+     */
+    function initCarousels() {
+        const carousels = document.querySelectorAll('.carousel-container');
+        
+        carousels.forEach(carousel => {
+            const items = carousel.querySelectorAll('.carousel-item');
+            const prevBtn = carousel.querySelector('.carousel-nav.prev');
+            const nextBtn = carousel.querySelector('.carousel-nav.next');
+            const indicators = carousel.querySelectorAll('.indicator');
+            let currentIndex = 0;
+            
+            // Function to show item at specific index
+            function showItem(index) {
+                // Hide all items
+                items.forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Update indicators
+                if (indicators.length > 0) {
+                    indicators.forEach(indicator => {
+                        indicator.classList.remove('active');
+                    });
+                    indicators[index].classList.add('active');
+                }
+                
+                // Show selected item
+                items[index].classList.add('active');
+                currentIndex = index;
+            }
+            
+            // Initialize: show first item
+            showItem(0);
+            
+            // Previous button click
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function() {
+                    let index = (currentIndex - 1 + items.length) % items.length;
+                    showItem(index);
+                });
+            }
+            
+            // Next button click
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    let index = (currentIndex + 1) % items.length;
+                    showItem(index);
+                });
+            }
+            
+            // Indicator clicks
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    showItem(index);
+                });
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                // Only process keyboard events if we're on a page with carousels
+                // and not inside the lightbox (to prevent conflicts)
+                const lightbox = document.getElementById('image-lightbox');
+                if ((lightbox && lightbox.style.display === 'block')) return;
+                
+                if (e.key === 'ArrowLeft' && prevBtn) {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight' && nextBtn) {
+                    nextBtn.click();
+                }
+            });
         });
     }
 

@@ -747,3 +747,114 @@ section {
         font-size: 28px;
     }
 }
+
+
+
+/* ===== CAROUSEL STYLES ===== */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-item {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.carousel-item.active {
+    display: block;
+    opacity: 1;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    border: none;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.carousel-nav:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--accent-color);
+}
+
+.carousel-nav.prev {
+    left: -50px;
+}
+
+.carousel-nav.next {
+    right: -50px;
+}
+
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--overlay-light);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.indicator.active {
+    background-color: var(--accent-color);
+}
+
+/* Ensure items take full width of container */
+.carousel-container .video-item,
+.carousel-container .music-item {
+    width: 100%;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .carousel-nav {
+        font-size: 18px;
+        padding: 10px;
+    }
+    
+    .carousel-nav.prev {
+        left: -30px;
+    }
+    
+    .carousel-nav.next {
+        right: -30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-nav {
+        font-size: 16px;
+        padding: 8px;
+    }
+    
+    .carousel-nav.prev {
+        left: -25px;
+    }
+    
+    .carousel-nav.next {
+        right: -25px;
+    }
+}

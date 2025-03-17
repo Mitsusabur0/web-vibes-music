@@ -349,14 +349,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Set active class based on current page
         navLinks.forEach(link => {
             const linkPage = link.getAttribute('href');
+            
             // Handle index page special case
-            if (currentPage === '' || currentPage === '/' || currentPage === 'index.html') {
-                if (linkPage === 'index.html') {
-                    link.classList.add('active');
-                }
+            if ((currentPage === '' || currentPage === '/' || currentPage === 'index.html') && 
+                linkPage === 'index.html') {
+                link.classList.add('active');
             } 
-            // For other pages
-            else if (linkPage === currentPage) {
+            // For other pages - make more robust by removing .html for comparison
+            else if (currentPage.replace('.html', '') === linkPage.replace('.html', '')) {
                 link.classList.add('active');
             }
         });

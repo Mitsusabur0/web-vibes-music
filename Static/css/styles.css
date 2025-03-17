@@ -549,35 +549,11 @@ img {
 }
 
 @media (max-width: 768px) {
-    /* Mobile-specific fix that preserves the background covering effect */
+    /* Fix for mobile background issue */
     .home-page, .bio-page {
-        /* Use a different technique altogether for mobile */
-        background-attachment: initial;
+        background-attachment: scroll; /* Change from fixed to scroll for mobile */
+        background-position: center top;
         background-size: cover;
-        background-position: center center;
-        position: relative;
-    }
-    
-    /* Add pseudo-elements for fixed backgrounds that cover entire sections */
-    .home-page::after, .bio-page::after {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-size: cover;
-        background-position: center center;
-        pointer-events: none;
-    }
-    
-    .home-page::after {
-        background-image: url('/Media/images/mobile/background_mobile.jpg');
-    }
-    
-    .bio-page::after {
-        background-image: url('/Media/images/mobile/background_mobile.jpg');
     }
 
     .hamburger {
@@ -641,9 +617,12 @@ img {
         flex-wrap: wrap;
     }
 
-    /* Remove background images from the elements themselves since we're using ::after */
-    .home-page, .bio-page {
-        background-image: none;
+    .home-page {
+        background-image: url('/Media/images/mobile/background_mobile.jpg');
+    }
+
+    .bio-page {
+        background-image: url('/Media/images/mobile/background_mobile.jpg');
     }
     
     #lightbox-img {

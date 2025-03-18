@@ -1,3 +1,5 @@
+// Static/js/main.js
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu functionality
@@ -335,10 +337,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /**
      * Set active navigation based on current page
+     * This replaces the scroll-based active nav functionality
      */
     function setActiveNavLink() {
         // Get current page filename
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const currentPage = window.location.pathname.split('/').pop();
         
         // Remove active class from all links
         navLinks.forEach(link => link.classList.remove('active'));
@@ -359,148 +362,152 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    /**
-     * Animate logo from center to top-left
-     * @param {string} destination - The URL to navigate to after animation
-     * @param {Function} callback - Function to call after animation completes
-     */
-    function animateLogo(destination, callback) {
-        const centerLogo = document.querySelector('.title-img');
-        const navLogo = document.querySelector('.logo-img');
-        
-        // Temporarily remove hidden class to get correct dimensions, but keep it invisible
-        navLogo.classList.remove('hidden');
-        navLogo.style.opacity = '0';
-        
-        // Get positions and dimensions
-        const logoRect = centerLogo.getBoundingClientRect();
-        const navLogoRect = navLogo.getBoundingClientRect();
-        
-        // Put the hidden class back
-        navLogo.classList.add('hidden');
-        navLogo.style.opacity = '';
-        
-        // Create a clone of the center logo at its current position
-        const clonedLogo = centerLogo.cloneNode(true);
-        clonedLogo.style.position = 'fixed';
-        clonedLogo.style.left = logoRect.left + 'px';
-        clonedLogo.style.top = logoRect.top + 'px';
-        clonedLogo.style.width = logoRect.width + 'px';
-        clonedLogo.style.height = logoRect.height + 'px';
-        clonedLogo.style.transition = 'all 0.8s ease-in-out';
-        clonedLogo.style.zIndex = '2000';
-        
-        document.body.appendChild(clonedLogo);
-        
-        // Hide the original logo
-        centerLogo.style.opacity = '0';
-        
-        // Force a reflow before starting the animation
-        void clonedLogo.offsetWidth;
-        
-        // Animate to top left corner with size change
-        clonedLogo.style.left = navLogoRect.left + 'px';
-        clonedLogo.style.top = navLogoRect.top + 'px';
-        clonedLogo.style.width = navLogoRect.width + 'px';
-        clonedLogo.style.height = navLogoRect.height + 'px';
-        
-        // Call callback after animation completes
-        setTimeout(() => {
-            if (callback) callback();
-            else window.location.href = destination;
-        }, 800); // Match this to the transition duration
-    }
+    // Set active nav link based on current page
+    setActiveNavLink();
+});
 
-    /**
-     * Animate navigation underline from active to target link
-     * @param {Element} activeLink - The currently active link
-     * @param {Element} targetLink - The link being navigated to
-     * @param {string} destination - The URL to navigate to after animation
-     */
-    function animateNavLine(activeLink, targetLink, destination) {
-        // Temporarily hide the existing underline on the active link
-        if (activeLink) {
-            // Create a style element to override the ::after pseudo-element
-            const styleEl = document.createElement('style');
-            styleEl.innerHTML = `.nav-link.active::after { width: 0 !important; }`;
-            document.head.appendChild(styleEl);
-        }
-        
-        // Create an animated line element
-        const animatedLine = document.createElement('div');
-        animatedLine.style.position = 'absolute';
-        animatedLine.style.height = '3px';
-        animatedLine.style.backgroundColor = 'var(--accent-color)';
-        // animatedLine.style.transition = 'all 0.5s ease-in-out';
-        animatedLine.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
-        animatedLine.style.zIndex = '1000';
-        document.body.appendChild(animatedLine);
-        
-        // Get positions for start (active link) and end (clicked link)
-        const startRect = activeLink.getBoundingClientRect();
-        const endRect = targetLink.getBoundingClientRect();
-        
-        // Position the line initially under the active link
-        animatedLine.style.width = startRect.width + 'px';
-        animatedLine.style.left = startRect.left + 'px';
-        animatedLine.style.top = (startRect.bottom - 3) + 'px'; // Position at the bottom edge minus line height
-        
-        // Force a reflow before starting the animation
-        void animatedLine.offsetWidth;
-        
-        // Animate to the position of the clicked link
-        animatedLine.style.width = endRect.width + 'px';
-        animatedLine.style.left = endRect.left + 'px';
-        animatedLine.style.top = (endRect.bottom - 3) + 'px'; // Position at the bottom edge minus line height
-        
-        // Navigate after animation completes
-        setTimeout(() => {
-            window.location.href = destination;
-        }, 500); // Match this to the transition duration
-    }
 
+
+
+
+// EXPERIMENTAL LOGO TRANSITION
+// Add this to your main.js file
+document.addEventListener('DOMContentLoaded', function() {
     // Check if we're on the home page
     const isHomePage = window.location.pathname.endsWith('index.html') || 
                        window.location.pathname.endsWith('/');
     
-    // Find the currently active link
-    let activeLink = document.querySelector('.nav-link.active');
-    if (!activeLink) {
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        activeLink = document.querySelector(`.nav-link[href="${currentPage}"]`);
-        if (activeLink) activeLink.classList.add('active');
-    }
-    
-    // Set up page transition animations
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            // Only do the animation if this isn't the current page
-            if (!this.classList.contains('active')) {
+    if (isHomePage) {
+        // Get all navigation links except the home link
+        const navLinks = document.querySelectorAll('.nav-link:not([href="index.html"])');
+        const centerLogo = document.querySelector('.title-img');
+        const navLogo = document.querySelector('.logo-img');
+        
+        // Keep the nav logo hidden on home page
+        navLogo.classList.add('hidden');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault(); // Prevent immediate navigation
                 
                 const destination = this.getAttribute('href');
-                const targetLink = this;
                 
-                if (isHomePage) {
-                    // First animate the logo from center to top-left
-                    animateLogo(destination, function() {
-                        // Then animate the navigation line
-                        animateNavLine(activeLink, targetLink, destination);
-                    });
-                } else {
-                    // Just animate the navigation line
-                    animateNavLine(activeLink, targetLink, destination);
-                }
-            }
+                // Temporarily remove hidden class to get correct dimensions, but keep it invisible
+                navLogo.classList.remove('hidden');
+                navLogo.style.opacity = '0';
+                
+                // Get positions and dimensions
+                const logoRect = centerLogo.getBoundingClientRect();
+                const navLogoRect = navLogo.getBoundingClientRect();
+                
+                // Put the hidden class back
+                navLogo.classList.add('hidden');
+                navLogo.style.opacity = '';
+                
+                // Create a clone of the center logo at its current position
+                const clonedLogo = centerLogo.cloneNode(true);
+                clonedLogo.style.position = 'fixed';
+                clonedLogo.style.left = logoRect.left + 'px';
+                clonedLogo.style.top = logoRect.top + 'px';
+                clonedLogo.style.width = logoRect.width + 'px';
+                clonedLogo.style.height = logoRect.height + 'px';
+                clonedLogo.style.transition = 'all 0.8s ease-in-out';
+                clonedLogo.style.zIndex = '2000';
+                
+                document.body.appendChild(clonedLogo);
+                
+                // Hide the original logo
+                centerLogo.style.opacity = '0';
+                
+                // Force a reflow before starting the animation
+                void clonedLogo.offsetWidth;
+                
+                // Animate to top left corner with size change
+                clonedLogo.style.left = navLogoRect.left + 'px';
+                clonedLogo.style.top = navLogoRect.top + 'px';
+                clonedLogo.style.width = navLogoRect.width + 'px';
+                clonedLogo.style.height = navLogoRect.height + 'px';
+                
+                // Navigate after animation completes
+                setTimeout(() => {
+                    window.location.href = destination;
+                }, 800); // Match this to the transition duration
+            });
         });
-    });
-
-    // Keep the nav logo hidden on home page
-    if (isHomePage) {
-        const navLogo = document.querySelector('.logo-img');
-        if (navLogo) navLogo.classList.add('hidden');
     }
+});
 
-    // Set active nav link based on current page
-    setActiveNavLink();
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on any page (this animation can work on all pages)
+    
+    // Get all navigation links
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    // Find the currently active link
+    let activeLink = document.querySelector('.nav-link.active');
+    
+    // Only proceed if we have navigation links
+    if (navLinks.length) {
+        // If no active link is found, default to the current page
+        if (!activeLink) {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            activeLink = document.querySelector(`.nav-link[href="${currentPage}"]`);
+        }
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Only do the animation if this isn't the current page
+                if (!this.classList.contains('active')) {
+                    e.preventDefault(); // Prevent immediate navigation
+                    
+                    const destination = this.getAttribute('href');
+                    
+                    // Create an animated line element
+                    const animatedLine = document.createElement('div');
+                    animatedLine.style.position = 'absolute';
+                    animatedLine.style.height = '3px';
+                    animatedLine.style.backgroundColor = 'var(--accent-color)';
+                    // animatedLine.style.transition = 'all 0.5s ease-in-out';
+                    animatedLine.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+                    animatedLine.style.zIndex = '1000';
+                    document.body.appendChild(animatedLine);
+                    
+                    // Get positions for start (active link) and end (clicked link)
+                    const startRect = activeLink.getBoundingClientRect();
+                    const endRect = this.getBoundingClientRect();
+                    
+                    // Position the line initially under the active link
+                    animatedLine.style.width = startRect.width + 'px';
+                    animatedLine.style.left = startRect.left + 'px';
+                    animatedLine.style.top = (startRect.bottom) + 'px';
+                    
+                    // Force a reflow before starting the animation
+                    void animatedLine.offsetWidth;
+                    
+                    // Animate to the position of the clicked link
+                    animatedLine.style.width = endRect.width + 'px';
+                    animatedLine.style.left = endRect.left + 'px';
+                    
+                    // Navigate after animation completes
+                    setTimeout(() => {
+                        window.location.href = destination;
+                    }, 500); // Match this to the transition duration
+                }
+            });
+        });
+        
+        // For the logo animation, keep it separate
+        const isHomePage = window.location.pathname.endsWith('index.html') || 
+                          window.location.pathname.endsWith('/');
+        
+        if (isHomePage) {
+            // Insert the logo animation code from previous solution here
+            // ...
+        }
+    }
 });

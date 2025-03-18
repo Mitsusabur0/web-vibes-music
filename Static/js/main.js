@@ -1,3 +1,5 @@
+// Static/js/main.js
+
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu functionality
@@ -334,26 +336,55 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /**
+     * Get the current page name from the URL
+     * Works with both /page and /page.html formats
+     */
+    function getCurrentPage() {
+        // Get current page from URL path
+        let currentPath = window.location.pathname;
+        
+        // Handle trailing slash
+        if (currentPath.endsWith('/') && currentPath !== '/') {
+            currentPath = currentPath.slice(0, -1);
+        }
+        
+        // Get the last part of the path (the page name)
+        let currentPage = currentPath.split('/').pop() || 'index';
+        
+        // Remove .html extension if it exists
+        currentPage = currentPage.replace('.html', '');
+        
+        // Handle root path special case
+        if (currentPage === '' || currentPath === '/') {
+            currentPage = 'index';
+        }
+        
+        return currentPage;
+    }
+
+    /**
+     * Normalize href to remove .html for comparison
+     */
+    function normalizeHref(href) {
+        if (!href) return '';
+        return href.replace('.html', '');
+    }
+
+    /**
      * Set active navigation based on current page
      */
     function setActiveNavLink() {
-        // Get current page filename
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const currentPage = getCurrentPage();
         
         // Remove active class from all links
         navLinks.forEach(link => link.classList.remove('active'));
         
         // Set active class based on current page
         navLinks.forEach(link => {
-            const linkPage = link.getAttribute('href');
+            const linkPage = normalizeHref(link.getAttribute('href'));
             
-            // Handle index page special case
-            if ((currentPage === '' || currentPage === '/' || currentPage === 'index.html') && 
-                linkPage === 'index.html') {
-                link.classList.add('active');
-            } 
-            // For other pages - make more robust by removing .html for comparison
-            else if (currentPage.replace('.html', '') === linkPage.replace('.html', '')) {
+            if (linkPage === currentPage || 
+                (currentPage === 'index' && (linkPage === 'index' || linkPage === ''))) {
                 link.classList.add('active');
             }
         });
@@ -459,16 +490,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 500); // Match this to the transition duration
     }
 
-    // Check if we're on the home page
-    const isHomePage = window.location.pathname.endsWith('index.html') || 
-                       window.location.pathname.endsWith('/');
+    // Check if we're on the home page (checking multiple possible formats)
+    const currentPage = getCurrentPage();
+    const isHomePage = currentPage === 'index';
     
     // Find the currently active link
     let activeLink = document.querySelector('.nav-link.active');
     if (!activeLink) {
-        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        activeLink = document.querySelector(`.nav-link[href="${currentPage}"]`);
-        if (activeLink) activeLink.classList.add('active');
+        const currentPage = getCurrentPage();
+        
+        // Try to find the link both with and without .html
+        navLinks.forEach(link => {
+            const linkPage = normalizeHref(link.getAttribute('href'));
+            if (linkPage === currentPage || 
+                (currentPage === 'index' && (linkPage === 'index' || linkPage === ''))) {
+                activeLink = link;
+                link.classList.add('active');
+            }
+        });
     }
     
     // Set up page transition animations

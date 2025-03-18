@@ -7,6 +7,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const body = document.querySelector('body');
     const navLinks = document.querySelectorAll('.nav-link');
+    // Set up logo click to simulate home link click for consistent animations
+    const logoLink = document.querySelector('.logo a');
+    if (logoLink) {
+        logoLink.addEventListener('click', function(e) {
+            // Only intercept if we're not already on home page
+            if (!isHomePage) {
+                e.preventDefault();
+                
+                // Find the home nav link
+                const homeLink = document.querySelector('.nav-link[href="index.html"]');
+                
+                if (homeLink) {
+                    // Simulate a click on the home link to trigger the animation
+                    homeLink.click();
+                } else {
+                    // Fallback if home link not found
+                    window.location.href = this.getAttribute('href');
+                }
+            }
+        });
+    }
 
     // Gallery items data
     // In a real project, this could be loaded from a JSON file or API
@@ -420,11 +441,15 @@ document.addEventListener('DOMContentLoaded', function() {
         clonedLogo.style.height = logoRect.height + 'px';
         clonedLogo.style.transition = 'all 0.8s ease-in-out';
         clonedLogo.style.zIndex = '2000';
+        clonedLogo.style.backgroundColor = 'transparent'; // Ensure no background
+        clonedLogo.style.boxShadow = 'none'; // Remove any shadows
         
         document.body.appendChild(clonedLogo);
         
-        // Hide the original logo
+        // Completely hide the original logo (not just opacity)
         centerLogo.style.opacity = '0';
+        centerLogo.style.visibility = 'hidden';
+        centerLogo.style.display = 'none';
         
         // Force a reflow before starting the animation
         void clonedLogo.offsetWidth;
@@ -435,12 +460,26 @@ document.addEventListener('DOMContentLoaded', function() {
         clonedLogo.style.width = navLogoRect.width + 'px';
         clonedLogo.style.height = navLogoRect.height + 'px';
         
-        // Call callback after animation completes
+        // Call callback after animation completes and clean up
         setTimeout(() => {
-            if (callback) callback();
-            else window.location.href = destination;
+            // Make the navigation logo visible
+            navLogo.classList.remove('hidden');
+            navLogo.style.opacity = '1'; 
+            navLogo.style.transition = 'opacity 0.2s ease';
+            
+            // Remove the cloned element
+            document.body.removeChild(clonedLogo);
+            
+            // Small delay to ensure the nav logo is visible before navigating
+            setTimeout(() => {
+                if (callback) callback();
+                else window.location.href = destination;
+            }, 50); 
         }, 800); // Match this to the transition duration
     }
+   
+
+
 
   /**
  * Animate navigation underline from active to target link

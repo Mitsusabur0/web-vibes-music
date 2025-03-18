@@ -442,31 +442,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 800); // Match this to the transition duration
     }
 
-    /**
-     * Animate navigation underline from active to target link
-     * @param {Element} activeLink - The currently active link
-     * @param {Element} targetLink - The link being navigated to
-     * @param {string} destination - The URL to navigate to after animation
-     */
-    function animateNavLine(activeLink, targetLink, destination) {
-        // Temporarily hide the existing underline on the active link
-        if (activeLink) {
-            // Create a style element to override the ::after pseudo-element
-            const styleEl = document.createElement('style');
-            styleEl.innerHTML = `.nav-link.active::after { width: 0 !important; }`;
-            document.head.appendChild(styleEl);
-        }
-        
-        // Create an animated line element
-        const animatedLine = document.createElement('div');
-        animatedLine.style.position = 'absolute';
-        animatedLine.style.height = '3px';
-        animatedLine.style.backgroundColor = 'var(--accent-color)';
-        // animatedLine.style.transition = 'all 0.5s ease-in-out';
-        animatedLine.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
-        animatedLine.style.zIndex = '1000';
-        document.body.appendChild(animatedLine);
-        
+  /**
+ * Animate navigation underline from active to target link
+ * @param {Element} activeLink - The currently active link
+ * @param {Element} targetLink - The link being navigated to
+ * @param {string} destination - The URL to navigate to after animation
+ */
+function animateNavLine(activeLink, targetLink, destination) {
+    // If no active link is found, just navigate directly
+    if (!activeLink) {
+        window.location.href = destination;
+        return;
+    }
+    
+    // Temporarily hide the existing underline on the active link
+    // Create a style element to override the ::after pseudo-element
+    const styleEl = document.createElement('style');
+    styleEl.innerHTML = `.nav-link.active::after { width: 0 !important; }`;
+    document.head.appendChild(styleEl);
+    
+    // Create an animated line element
+    const animatedLine = document.createElement('div');
+    animatedLine.style.position = 'absolute';
+    animatedLine.style.height = '3px';
+    animatedLine.style.backgroundColor = 'var(--accent-color)';
+    // animatedLine.style.transition = 'all 0.5s ease-in-out';
+    animatedLine.style.transition = 'all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+    animatedLine.style.zIndex = '1000';
+    document.body.appendChild(animatedLine);
+    
+    try {
         // Get positions for start (active link) and end (clicked link)
         const startRect = activeLink.getBoundingClientRect();
         const endRect = targetLink.getBoundingClientRect();
@@ -488,27 +493,41 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => {
             window.location.href = destination;
         }, 500); // Match this to the transition duration
+    } catch (e) {
+        // If anything goes wrong, just navigate normally
+        console.error("Navigation animation error:", e);
+        window.location.href = destination;
     }
+}
 
     // Check if we're on the home page (checking multiple possible formats)
     const currentPage = getCurrentPage();
     const isHomePage = currentPage === 'index';
     
-    // Find the currently active link
-    let activeLink = document.querySelector('.nav-link.active');
-    if (!activeLink) {
-        const currentPage = getCurrentPage();
+// Find the currently active link
+let activeLink = document.querySelector('.nav-link.active');
+if (!activeLink) {
+    const currentPage = getCurrentPage();
+    
+    // Try to find the link both with and without .html
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        const linkPage = normalizeHref(href);
         
-        // Try to find the link both with and without .html
-        navLinks.forEach(link => {
-            const linkPage = normalizeHref(link.getAttribute('href'));
-            if (linkPage === currentPage || 
-                (currentPage === 'index' && (linkPage === 'index' || linkPage === ''))) {
-                activeLink = link;
-                link.classList.add('active');
-            }
-        });
+        if (linkPage === currentPage || 
+            (linkPage === currentPage + '.html') ||
+            (currentPage === 'index' && (linkPage === 'index' || linkPage === ''))) {
+            activeLink = link;
+            link.classList.add('active');
+        }
+    });
+    
+    // If we still don't have an active link and we're not on home page,
+    // just use the first nav link as a fallback for animation purposes
+    if (!activeLink && !isHomePage && navLinks.length > 0) {
+        activeLink = navLinks[0]; // Use first link as fallback
     }
+}
     
     // Set up page transition animations
     navLinks.forEach(link => {

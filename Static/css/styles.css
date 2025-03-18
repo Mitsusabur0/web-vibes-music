@@ -80,13 +80,17 @@ main {
     overflow-y: auto;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 /* ===== NAVIGATION ===== */
 .main-nav {
     position: fixed;
     width: 100%;
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     padding: 1rem 0;
     top: 0;
     left: 0;
@@ -105,7 +109,22 @@ main {
     z-index: 1001;
 }
 
+.header-container {
+    display: flex;
+}
+
+.title-img {
+    margin: auto;
+    align-self: center;
+    height: 40vh;
+}
+
 .logo-img {
+    height: 60px;
+    width: auto;
+}
+
+.font-img {
     height: 40px;
     width: auto;
 }
@@ -118,7 +137,7 @@ main {
 }
 
 .nav-link {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     position: relative;
     padding: 0.5rem 0;
@@ -146,7 +165,7 @@ main {
 }
 
 .social-links a {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .hamburger {
@@ -210,8 +229,19 @@ section {
     z-index: 1;
 }
 
+.main-nav {
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    /* backdrop-filter: blur(10px); */
+}
+
+.blur-bg {
+    /* backdrop-filter: blur(3px); */
+    /* padding: 10px; */
+}
+
 .home-page {
     background-image: url('/Media/images/desktop/background_desktop.jpg');
+    /* background-image: url('/Media/images/desktop/background_desktop_draw.jpg'); */
 }
 
 .bio-page {

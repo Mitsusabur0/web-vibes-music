@@ -240,15 +240,6 @@ section {
     z-index: 1;
 }
 
-.main-nav {
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    /* backdrop-filter: blur(10px); */
-}
-
-.blur-bg {
-    /* backdrop-filter: blur(3px); */
-    /* padding: 10px; */
-}
 
 .home-page {
     background-image: url('/Media/images/desktop/background_desktop.jpg');

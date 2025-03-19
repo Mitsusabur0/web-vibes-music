@@ -216,7 +216,11 @@ section {
 }
 
 /* Background styles for home and bio pages */
-.home-page, .bio-page {
+.home-page, 
+.bio-page, 
+.gallery-page, 
+.videos-page, 
+.music-page {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -229,7 +233,11 @@ section {
     z-index: 0;
 }
 
-.home-page::before, .bio-page::before {
+.home-page::before, 
+.bio-page::before, 
+.videos-page::before,
+.music-page::before,
+.gallery-page::before {
     content: '';
     position: absolute;
     top: 0;
@@ -242,24 +250,34 @@ section {
 
 
 .home-page {
-    background-image: url('/Media/images/desktop/background_desktop.jpg');
-    /* background-image: url('/Media/images/desktop/background_desktop_draw.jpg'); */
+    background-image: url('/Media/images/desktop/bg-home.jpg');
+    /* background-image: url('/Media/images/desktop/bg-home-draw.jpg'); */
 }
 
 .bio-page {
-    background-image: url('/Media/images/desktop/background_bio_desktop.jpg');
+    background-image: url('/Media/images/desktop/bg-bio.jpg');
+}
+
+.gallery-page {
+    background-image: url('/Media/images/desktop/bg-gallery.jpg');
+}
+.videos-page {
+    background-image: url('/Media/images/desktop/bg-videos.jpg');
+}
+.music-page {
+    background-image: url('/Media/images/desktop/bg-music.jpg');
 }
 
 /* Solid dark background for gallery, videos, and music pages */
-.gallery-page, .videos-page, .music-page {
+/* .gallery-page, .videos-page, .music-page {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-color: #111111; /* Dark background color */
-}
+    background-color: #111111;
+} */
 
 /* ===== HOME PAGE ===== */
 .main-title {
@@ -576,7 +594,7 @@ section {
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background-color: var(--overlay-light);
+    background-color: var(--overlay-dark);
     border-radius: 50px;
     font-weight: 500;
     transition: var(--transition);
@@ -812,7 +830,8 @@ section {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.9);
+    font-weight: 700;
     color: var(--text-light);
     border: none;
     font-size: 24px;
@@ -848,6 +867,7 @@ section {
     height: 12px;
     border-radius: 50%;
     background-color: var(--overlay-light);
+    background-color: #f6f6f6;
     cursor: pointer;
     transition: var(--transition);
 }

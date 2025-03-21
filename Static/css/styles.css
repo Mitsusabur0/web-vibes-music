@@ -90,7 +90,7 @@ main {
     width: 100%;
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0);
-    /* backdrop-filter: blur(10px); */
+    /* backdrop-filter: blur(5px); */
     padding: 1rem 0;
     top: 0;
     left: 0;
@@ -250,8 +250,8 @@ section {
 
 
 .home-page {
-    background-image: url('/Media/images/desktop/bg-home.jpg');
-    /* background-image: url('/Media/images/desktop/bg-home-draw.jpg'); */
+    /* background-image: url('/Media/images/desktop/bg-home.jpg'); */
+    background-image: url('/Media/images/desktop/bg-home-draw.jpg');
 }
 
 .bio-page {

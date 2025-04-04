@@ -1,0 +1,11 @@
+/* Main CSS file that imports modular CSS files */
+
+/* Import reset and base styles */
+@import 'reset.css';
+@import 'base.css';
+
+/* Import page-specific styles */
+@import 'pages.css';
+
+/* Import music page styles */
+@import 'music.css';

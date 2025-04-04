@@ -240,7 +240,8 @@
 
 /* ============================================= VIDEOS PAGE ===== */
 .videos-page {
-    background-image: url('/Media/images/desktop/bg-videos.jpg');
+    /* background-image: url('/Media/images/desktop/bg-videos.jpg'); */
+    background-image: url('/Media/images/desktop/bg-gallery.jpg');
     background-color: var(--primary-color);
 }
 

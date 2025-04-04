@@ -580,10 +580,10 @@ if (!activeLink) {
                 
                 if (isHomePage) {
                     // First animate the logo from center to top-left
-                    animateLogo(destination, function() {
-                        // Then animate the navigation line
-                        animateNavLine(activeLink, targetLink, destination);
-                    });
+                    // animateLogo(destination, function() {
+                    //     // Then animate the navigation line
+                    // });
+                    animateNavLine(activeLink, targetLink, destination);
                 } else {
                     // Just animate the navigation line
                     animateNavLine(activeLink, targetLink, destination);

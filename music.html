@@ -14,117 +14,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./Media/images/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./Media/images/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./Media/images/favicon_io/favicon-16x16.png">
-    <style>
-        /* Add carousel styles directly here for easier implementation */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            max-width: 40vw;
-            margin: 0 auto;
-            margin-top: 20vh;
-        }
-
-        .carousel-wrapper {
-            overflow: hidden;
-            position: relative;
-        }
-
-        .carousel-item {
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .carousel-item.active {
-            display: block;
-            opacity: 1;
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: var(--text-light);
-            border: none;
-            font-size: 24px;
-            padding: 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: var(--transition);
-            z-index: 10;
-        }
-
-        .carousel-nav:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--accent-color);
-        }
-
-        .carousel-nav.prev {
-            left: -50px;
-        }
-
-        .carousel-nav.next {
-            right: -50px;
-        }
-
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--overlay-light);
-            background-color: #f6f6f6;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .indicator.active {
-            background-color: var(--accent-color);
-        }
-
-        /* Ensure items take full width of container */
-        .carousel-container .music-item {
-            width: 100%;
-            margin: 0;
-        }
-
-        @media (max-width: 768px) {
-            .carousel-nav {
-                font-size: 18px;
-                padding: 10px;
-            }
-            
-            .carousel-nav.prev {
-                left: -30px;
-            }
-            
-            .carousel-nav.next {
-                right: -30px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .carousel-nav {
-                font-size: 16px;
-                padding: 8px;
-            }
-            
-            .carousel-nav.prev {
-                left: -25px;
-            }
-            
-            .carousel-nav.next {
-                right: -25px;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -139,13 +28,6 @@
             
             <!-- Desktop Navigation Menu -->
             <ul class="nav-menu">
-
-                <!-- <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="bio.html" class="nav-link">Bio</a></li>
-                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
-                <li><a href="videos.html" class="nav-link">Videos</a></li>
-                <li><a href="music.html" class="nav-link">Music</a></li> -->
-
                 <a href="index.html" class="nav-link">
                     <img src="/Media/images/fonts/home/home-w.png" alt="home img" class="font-img">
                 </a>
@@ -192,51 +74,38 @@
     <main>
         <!-- Music Section -->
         <section class="music-page">
-            <div class="page-content">
-                <!-- <h2>Music</h2> -->
-                <!-- Begin carousel container -->
-                <div class="carousel-container music-carousel">
-                    <div class="carousel-wrapper">
-                        <!-- First track with active class to show by default -->
-                        <div class="carousel-item music-item active">
-                            <!-- <h3>Misery and the Mend</h3> -->
+            <div class="music-background"></div>
+            <div class="music-content-container">
+                <!-- Scrollable Songs Section -->
+                <div class="music-scrollable-area">
+                    <!-- Vertical Music Layout -->
+                    <div class="music-container">
+                        <!-- First track -->
+                        <div class="music-item">
                             <div class="spotify-wrapper">
-                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/70ogw1NKKOwiwG8KB1XOak?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/70ogw1NKKOwiwG8KB1XOak?utm_source=generator&theme=0" width="100%" height="252" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                             </div>
                         </div>
                         
                         <!-- Second track -->
-                        <div class="carousel-item music-item">
-                            <!-- <h3>The Fall Off</h3> -->
+                        <div class="music-item">
                             <div class="spotify-wrapper">
-                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1wkabSJ81QsYG14vYfn6i8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1wkabSJ81QsYG14vYfn6i8?utm_source=generator&theme=0" width="100%" height="252" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                             </div>
                         </div>
                         
                         <!-- Third track -->
-                        <div class="carousel-item music-item">
-                            <!-- <h3>Rafiqi</h3> -->
+                        <div class="music-item">
                             <div class="spotify-wrapper">
-                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7BXfAP07qdWw4hlUGqwCIs?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/7BXfAP07qdWw4hlUGqwCIs?utm_source=generator&theme=0" width="100%" height="252" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Navigation arrows -->
-                    <button class="carousel-nav prev" aria-label="Previous track">&lt;</button>
-                    <button class="carousel-nav next" aria-label="Next track">&gt;</button>
-                    
-                    <!-- Indicators -->
-                    <div class="carousel-indicators">
-                        <span class="indicator active" data-index="0"></span>
-                        <span class="indicator" data-index="1"></span>
-                        <span class="indicator" data-index="2"></span>
-                    </div>
                 </div>
                 
-                <!-- Keep platforms section outside carousel -->
-                <div class="music-platforms">
-                    <h3>Listen on Other Platforms</h3>
+                <!-- Platforms Section (Outside scrollable area) -->
+                <!-- <div class="music-platforms">
+                    <h3>Listen on Other Platforms:</h3>
                     <div class="platform-links">
                         <a href="https://open.spotify.com/artist/2z56uAB5zLrQXs2lIUnxNt" target="_blank" class="platform-link">
                             <i class="fab fa-spotify"></i> Spotify
@@ -248,7 +117,7 @@
                             <i class="fab fa-youtube"></i> YouTube Music
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
     </main>
@@ -262,74 +131,5 @@
 
     <!-- JavaScript -->
     <script src="/Static/js/main.js"></script>
-    
-    <!-- Additional carousel script for testing purposes -->
-    <script>
-        // This additional script ensures carousel functionality even if main.js hasn't been updated
-        document.addEventListener('DOMContentLoaded', function() {
-            const carousels = document.querySelectorAll('.carousel-container');
-            
-            carousels.forEach(carousel => {
-                const items = carousel.querySelectorAll('.carousel-item');
-                const prevBtn = carousel.querySelector('.carousel-nav.prev');
-                const nextBtn = carousel.querySelector('.carousel-nav.next');
-                const indicators = carousel.querySelectorAll('.indicator');
-                let currentIndex = 0;
-                
-                // Function to show item at specific index
-                function showItem(index) {
-                    // Hide all items
-                    items.forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    
-                    // Update indicators
-                    if (indicators.length > 0) {
-                        indicators.forEach(indicator => {
-                            indicator.classList.remove('active');
-                        });
-                        indicators[index].classList.add('active');
-                    }
-                    
-                    // Show selected item
-                    items[index].classList.add('active');
-                    currentIndex = index;
-                }
-                
-                // Previous button click
-                if (prevBtn) {
-                    prevBtn.addEventListener('click', function() {
-                        let index = (currentIndex - 1 + items.length) % items.length;
-                        showItem(index);
-                    });
-                }
-                
-                // Next button click
-                if (nextBtn) {
-                    nextBtn.addEventListener('click', function() {
-                        let index = (currentIndex + 1) % items.length;
-                        showItem(index);
-                    });
-                }
-                
-                // Indicator clicks
-                indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', function() {
-                        showItem(index);
-                    });
-                });
-                
-                // Keyboard navigation
-                document.addEventListener('keydown', function(e) {
-                    // Only process keyboard events if we're on a page with carousels
-                    if (e.key === 'ArrowLeft' && prevBtn) {
-                        prevBtn.click();
-                    } else if (e.key === 'ArrowRight' && nextBtn) {
-                        nextBtn.click();
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>

@@ -1,4 +1,6 @@
-/* ===== HOME PAGE ===== */
+
+
+/* ============================================= HOME PAGE ===== */
 .home-page {
     /* background-image: url('/Media/images/desktop/bg-home.jpg'); */
     background-image: url('/Media/images/desktop/bg-home-draw.jpg');
@@ -23,7 +25,7 @@
     transition: opacity 0.5s ease;
 }
 
-/* ===== BIO PAGE ===== */
+/* ============================================= BIO PAGE ===== */
 .bio-page {
     background-image: url('/Media/images/desktop/bg-bio.jpg');
 }
@@ -49,7 +51,7 @@
     text-align: justify;
 }
 
-/* ===== GALLERY PAGE ===== */
+/* ============================================= GALLERY PAGE ===== */
 .gallery-page {
     background-image: url('/Media/images/desktop/bg-gallery.jpg');
     background-color: var(--primary-color);
@@ -152,7 +154,7 @@
     transform: translateY(0);
 }
 
-/* ===== LIGHTBOX STYLES ===== */
+/* ============================================= LIGHTBOX STYLES ===== */
 .lightbox {
     display: none;
     position: fixed;
@@ -235,7 +237,7 @@
     right: 20px;
 }
 
-/* ===== VIDEOS PAGE ===== */
+/* ============================================= VIDEOS PAGE ===== */
 .videos-page {
     background-image: url('/Media/images/desktop/bg-videos.jpg');
     background-color: var(--primary-color);
@@ -247,7 +249,7 @@
     text-align: center;
 }
 
-/* ===== CAROUSEL STYLES ===== */
+/* ============================================= CAROUSEL STYLES ===== */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -370,7 +372,7 @@
 
 
 
-/* ======================================== RESPONSIVE STYLES ===== */
+/* ============================================= RESPONSIVE STYLES ===== */
 @media (max-width: 768px) {
 
     /* Adjust gallery navigation for mobile */

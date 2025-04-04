@@ -41,8 +41,8 @@ main {
 }
 
 .font-img {
-    height: 40px;
-    width: auto;
+    height: auto;
+    width: 6vw;
 }
 
 .nav-menu {
@@ -57,6 +57,7 @@ main {
     font-weight: 500;
     position: relative;
     padding: 0.5rem 0;
+    /* width: 10vw; */
 }
 
 .nav-link::after {

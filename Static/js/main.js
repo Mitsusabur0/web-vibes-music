@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clonedLogo.style.top = logoRect.top + 'px';
         clonedLogo.style.width = logoRect.width + 'px';
         clonedLogo.style.height = logoRect.height + 'px';
-        clonedLogo.style.transition = 'all 0.8s ease-in-out';
+        clonedLogo.style.transition = 'all 0.5s ease-in-out';
         clonedLogo.style.zIndex = '2000';
         clonedLogo.style.backgroundColor = 'transparent'; // Ensure no background
         clonedLogo.style.boxShadow = 'none'; // Remove any shadows

@@ -227,6 +227,11 @@ section {
         background-size: cover;
     }
 
+    .font-img {
+        height: auto;
+        width: 80px;
+    }
+
     .hamburger {
         display: block;
     }

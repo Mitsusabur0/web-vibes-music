@@ -82,6 +82,20 @@
     margin-bottom: 2rem;
 }
 
+/*  LAZY LOADING STYLES */
+.lazy-image {
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
+}
+
+.lazy-image[src^="data:image/svg+xml"] {
+    opacity: 0.3; /* Show placeholder with reduced opacity */
+}
+
+.gallery-item img:not(.lazy-image) {
+    opacity: 1;
+}
+
 .category-btn {
     background: none;
     border: 2px solid var(--text-light);

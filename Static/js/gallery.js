@@ -2,175 +2,60 @@
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Gallery items data
-    // In a real project, this could be loaded from a JSON file or API
-    const galleryItems = [
-        {
-            id: 1,
-            src: '/Media/images/gallery/1.jpg',
-            alt: 'Bives performing outdoors',
-            category: 'outdoor'
-        },
-        {
-            id: 2,
-            src: '/Media/images/gallery/2.jpg',
-            alt: 'Bives in studio session',
-            category: 'studio'
-        },
-        {
-            id: 3,
-            src: '/Media/images/gallery/3.jpg',
-            alt: 'Bives outdoor concert',
-            category: 'outdoor'
-        },
-        {
-            id: 4,
-            src: '/Media/images/gallery/4.jpg',
-            alt: 'Bives in the studio',
-            category: 'studio'
-        },
-        {
-            id: 5,
-            src: '/Media/images/gallery/5.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 6,
-            src: '/Media/images/gallery/6.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 7,
-            src: '/Media/images/gallery/7.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 8,
-            src: '/Media/images/gallery/8.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 9,
-            src: '/Media/images/gallery/9.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 10,
-            src: '/Media/images/gallery/10.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 11,
-            src: '/Media/images/gallery/11.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 12,
-            src: '/Media/images/gallery/12.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 13,
-            src: '/Media/images/gallery/13.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 14,
-            src: '/Media/images/gallery/14.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 15,
-            src: '/Media/images/gallery/15.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 16,
-            src: '/Media/images/gallery/16.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 17,
-            src: '/Media/images/gallery/17.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 18,
-            src: '/Media/images/gallery/18.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 19,
-            src: '/Media/images/gallery/19.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 20,
-            src: '/Media/images/gallery/20.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 21,
-            src: '/Media/images/gallery/21.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-        {
-            id: 22,
-            src: '/Media/images/gallery/22.jpg',
-            alt: 'Bives performing live',
-            category: 'outdoor'
-        },
-    ];
-
     // Initialize gallery if on gallery page
     if (document.querySelector('.gallery-scroller')) {
-        initGallery();
-    }
-
-    // Initialize lightbox if on gallery page
-    if (document.getElementById('image-lightbox')) {
-        initLightbox();
-    }
-
-    // Gallery category filtering
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    if (categoryButtons.length > 0) {
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active class from all buttons
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
+        // Fetch gallery data from JSON file
+        fetch('/Media/gallery-data.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(galleryItems => {
+                initGallery(galleryItems);
                 
-                // Add active class to clicked button
-                this.classList.add('active');
+                // Initialize lightbox if on gallery page
+                if (document.getElementById('image-lightbox')) {
+                    initLightbox();
+                }
                 
-                // Filter gallery items
-                const category = this.getAttribute('data-category');
-                filterGallery(category);
+                // Set up category filtering if buttons exist
+                setupCategoryFiltering();
+            })
+            .catch(error => {
+                console.error('Error loading gallery data:', error);
+                // You could display a fallback message or images here
             });
-        });
+    }
+
+    /**
+     * Set up category filtering buttons
+     */
+    function setupCategoryFiltering() {
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        if (categoryButtons.length > 0) {
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Filter gallery items
+                    const category = this.getAttribute('data-category');
+                    filterGallery(category);
+                });
+            });
+        }
     }
 
     /**
      * Initialize gallery with items
+     * @param {Array} galleryItems - Array of gallery item objects
      */
-    function initGallery() {
+    function initGallery(galleryItems) {
         const galleryScroller = document.querySelector('.gallery-scroller');
         if (!galleryScroller) return;
 

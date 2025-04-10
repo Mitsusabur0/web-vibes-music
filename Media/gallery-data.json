@@ -1,0 +1,134 @@
+[
+    {
+      "id": 1,
+      "src": "/Media/images/gallery/1.jpg",
+      "alt": "Bives performing outdoors",
+      "category": "outdoor"
+    },
+    {
+      "id": 2,
+      "src": "/Media/images/gallery/2.jpg",
+      "alt": "Bives in studio session",
+      "category": "studio"
+    },
+    {
+      "id": 3,
+      "src": "/Media/images/gallery/3.jpg",
+      "alt": "Bives outdoor concert",
+      "category": "outdoor"
+    },
+    {
+      "id": 4,
+      "src": "/Media/images/gallery/4.jpg",
+      "alt": "Bives in the studio",
+      "category": "studio"
+    },
+    {
+      "id": 5,
+      "src": "/Media/images/gallery/5.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 6,
+      "src": "/Media/images/gallery/6.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 7,
+      "src": "/Media/images/gallery/7.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 8,
+      "src": "/Media/images/gallery/8.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 9,
+      "src": "/Media/images/gallery/9.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 10,
+      "src": "/Media/images/gallery/10.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 11,
+      "src": "/Media/images/gallery/11.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 12,
+      "src": "/Media/images/gallery/12.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 13,
+      "src": "/Media/images/gallery/13.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 14,
+      "src": "/Media/images/gallery/14.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 15,
+      "src": "/Media/images/gallery/15.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 16,
+      "src": "/Media/images/gallery/16.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 17,
+      "src": "/Media/images/gallery/17.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 18,
+      "src": "/Media/images/gallery/18.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 19,
+      "src": "/Media/images/gallery/19.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 20,
+      "src": "/Media/images/gallery/20.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 21,
+      "src": "/Media/images/gallery/21.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    },
+    {
+      "id": 22,
+      "src": "/Media/images/gallery/22.jpg",
+      "alt": "Bives performing live",
+      "category": "outdoor"
+    }
+  ]

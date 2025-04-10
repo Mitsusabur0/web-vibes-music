@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize gallery if on gallery page
     if (document.querySelector('.gallery-scroller')) {
         // Fetch gallery data from JSON file
-        fetch('/Media/gallery-data.json')
+        fetch('/Media/images/gallery/gallery-data.json')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

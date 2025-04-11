@@ -20,7 +20,7 @@
     margin: auto;
     margin-top: 30vh;
     align-self: center;
-    height: 30vh;
+    height: auto;
     transition: opacity 0.5s ease;
 }
 
@@ -32,7 +32,7 @@
 .bio-container {
     max-width: 800px;
     margin: 0 auto;
-    /* background-color: var(--text-background-dark); */
+    background-color: var(--text-background-dark);
     padding: 2rem;
     border-radius: 8px;
     display: flex;
@@ -205,13 +205,25 @@
 /* ============================================= RESPONSIVE STYLES ===== */
 @media (max-width: 768px) {
 
+
+    .title-img {
+        margin-top: 0;
+    }
+
     .home-page {
         background-image: url('/Media/images/mobile/mobile-bg-doodle.jpg');
+        background-image: url('/Media/images/mobile/background-mobile.jpg');
         /* background-image: url('/Media/images/desktop/background_bio_desktop.jpg'); */
     }
 
     .bio-page {
         background-image: url('/Media/images/mobile/mobile-bg-doodle.jpg');
+    }
+
+    .bio-container {
+        padding: 1.5rem;
+        margin: 1.5rem;
+        background-color: transparent;
     }
     
     .videos-page {
@@ -262,12 +274,6 @@
 @media (max-width: 480px) {
     .main-title {
         font-size: 2.5rem;
-    }
-
-    .bio-container {
-        padding: 1.5rem;
-        margin: 1.5rem;
-        background-color: none;
     }
 
     .bio-container h2,

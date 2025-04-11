@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
         nextButton: document.querySelector('.gallery-carousel .carousel-nav.next'),
         lightbox: document.getElementById('image-lightbox'),
         lightboxImg: document.getElementById('lightbox-img'),
-        lightboxTitle: document.getElementById('lightbox-title'),
         lightboxClose: document.querySelector('.lightbox-close'),
         lightboxPrev: document.querySelector('.lightbox-nav.prev'),
         lightboxNext: document.querySelector('.lightbox-nav.next')
@@ -188,7 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const image = galleryData[index];
         
         galleryConfig.lightboxImg.src = image.src;
-        galleryConfig.lightboxTitle.textContent = image.alt;
         galleryConfig.lightbox.style.display = 'block';
         
         // Prevent scrolling on the body when lightbox is open

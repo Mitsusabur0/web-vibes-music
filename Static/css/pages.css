@@ -61,6 +61,61 @@
     text-align: justify;
 }
 
+/* ============================================= BIO PAGE MOBILE SCROLL FIX ===== */
+/* These styles will be added to pages.css */
+
+/* Make the bio page structure match the music page's scrollable approach */
+@media (max-width: 768px) {
+    /* Main bio page container - keep fixed positioning */
+    .bio-page {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    /* Reposition the scrollable container to start from the top */
+    .bio-page .page-content {
+        position: absolute;
+        top: 80px; /* Start below the nav bar instead of center positioning */
+        left: 0;
+        right: 0;
+        bottom: 60px; /* Space for footer */
+        transform: none; /* Remove the centering transform */
+        width: 100%;
+        max-width: 100%;
+        height: auto; /* Let height be determined by top/bottom positioning */
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto; /* Enable vertical scrolling */
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        padding: 15px;
+    }
+    
+    /* Adjust bio container to work within scrollable area */
+    .bio-page .bio-container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 1rem;
+        background-color: transparent;
+    }
+    
+    /* Ensure text is properly aligned */
+    .bio-page .bio-text p {
+        text-align: justify;
+        width: 100%;
+        word-wrap: break-word;
+    }
+    
+    /* Center the about image */
+    .bio-page .about-img {
+        display: block;
+        margin: 0 auto 1rem auto;
+    }
+}
 
 
 /* ============================================= VIDEOS PAGE ===== */

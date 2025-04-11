@@ -1,6 +1,7 @@
 /* ===== GALLERY PAGE ===== */
 .gallery-page {
-    background-image: url('/Media/images/desktop/bg-gallery.jpg');
+    /* background-image: url('/Media/images/desktop/bg-gallery.jpg'); */
+    background-image: url('/Media/images/desktop/bg-gallery-dark.jpg');
     position: fixed;
     top: 0;
     left: 0;

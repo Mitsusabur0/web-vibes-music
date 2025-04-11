@@ -120,8 +120,8 @@
 
 /* ============================================= VIDEOS PAGE ===== */
 .videos-page {
-    /* background-image: url('/Media/images/desktop/bg-videos.jpg'); */
-    background-image: url('/Media/images/desktop/bg-gallery.jpg');
+    /* background-image: url('/Media/images/desktop/bg-gallery.jpg'); */
+    background-image: url('/Media/images/desktop/bg-gallery-dark.jpg');
     background-color: var(--primary-color);
 }
 
@@ -281,10 +281,6 @@
     .mobile-title {
         display: block; /* Show on mobile */
         margin-top: 1rem;
-    }
-
-    .page-content {
-        /* padding: 0; */
     }
 
     .home-page {

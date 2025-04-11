@@ -88,9 +88,13 @@
 }
 
 .gallery-container {
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 20px;
+    width: 85%;
+    max-width: 1400px;
+    margin: 0 auto 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .gallery-scroller {

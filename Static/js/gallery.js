@@ -20,35 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     initLightbox();
                 }
                 
-                // Set up category filtering if buttons exist
-                setupCategoryFiltering();
+                // Set up gallery navigation arrows
+                setupGalleryNavigation();
             })
             .catch(error => {
                 console.error('Error loading gallery data:', error);
                 // You could display a fallback message or images here
             });
-    }
-
-    /**
-     * Set up category filtering buttons
-     */
-    function setupCategoryFiltering() {
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        if (categoryButtons.length > 0) {
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    categoryButtons.forEach(btn => btn.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Filter gallery items
-                    const category = this.getAttribute('data-category');
-                    filterGallery(category);
-                });
-            });
-        }
     }
 
     /**
@@ -68,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Create gallery items with placeholder images
         galleryItems.forEach(item => {
             const galleryItem = document.createElement('div');
-            galleryItem.className = `gallery-item ${item.category}`;
+            galleryItem.className = 'gallery-item';
             
             // Create image with placeholder initially
             galleryItem.innerHTML = `
@@ -133,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentIndex = 0;
         let visibleItems = [];
 
-        // Update the visible items based on current filtering
+        // Update the visible items
         function updateVisibleItems() {
             visibleItems = [];
             const items = document.querySelectorAll('.gallery-item');
@@ -266,22 +244,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-        /**
-         * Filter gallery items by category
-         * @param {string} category - The category to filter by
-         */
-        function filterGallery(category) {
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            
-            galleryItems.forEach(item => {
-                if (category === 'all' || item.classList.contains(category)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
     
     /**
      * Fallback for browsers that don't support IntersectionObserver

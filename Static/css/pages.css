@@ -1,5 +1,3 @@
-
-
 /* ============================================= HOME PAGE ===== */
 .home-page {
     /* background-image: url('/Media/images/desktop/bg-home.jpg'); */
@@ -24,11 +22,6 @@
     align-self: center;
     height: 30vh;
     transition: opacity 0.5s ease;
-}
-
-.hidden-placeholder {
-    width: 14.6vw;
-    visibility: hidden;
 }
 
 /* ============================================= BIO PAGE ===== */
@@ -294,8 +287,6 @@
 .carousel-wrapper {
     overflow: hidden;
     position: relative;
-    /* max-width: 50vw; */
-    /* margin: 0 10vw; */
 }
 
 .carousel-item {
@@ -309,33 +300,45 @@
     opacity: 1;
 }
 
+/* Updated carousel navigation styles to prevent overlap */
 .carousel-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.9);
-    font-weight: 700;
-    color: var(--text-light);
+    background: rgba(0, 0, 0, 0.6); /* Darker, more opaque background */
     border: none;
-    font-size: 24px;
-    padding: 15px;
+    padding: 12px; /* Larger padding for better touch targets */
     border-radius: 50%;
     cursor: pointer;
     transition: var(--transition);
-    z-index: 10;
+    z-index: 20; /* Ensure arrows are above video content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .carousel-nav:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--accent-color);
+    background: rgba(0, 0, 0, 0.8);
 }
 
+/* Position arrows INSIDE the carousel container */
 .carousel-nav.prev {
-    left: -50px;
+    left: 15px; /* Position inside instead of outside */
 }
 
 .carousel-nav.next {
-    right: -50px;
+    right: 15px; /* Position inside instead of outside */
+}
+
+/* Styles for the arrow images */
+.carousel-nav img {
+    height: 24px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.carousel-nav:hover img {
+    filter: brightness(1.2);
 }
 
 .carousel-indicators {
@@ -360,9 +363,6 @@
 }
 
 /* Video item styles */
-
-
-/* Ensure items take full width of container */
 .carousel-container .video-item {
     width: 100%;
     margin: 0;
@@ -399,8 +399,6 @@
     height: 100%;
     max-height: 60vh;
 }
-
-
 
 /* ============================================= RESPONSIVE STYLES ===== */
 @media (max-width: 768px) {
@@ -443,18 +441,22 @@
         font-size: 3rem;
     }
     
-    /* Carousel responsive styles */
+    /* Carousel responsive styles - Updated for in-video positioning */
     .carousel-nav {
-        font-size: 18px;
         padding: 10px;
     }
     
+    .carousel-nav img {
+        height: 20px;
+    }
+    
+    /* Ensure arrows remain visible but not too close to edge */
     .carousel-nav.prev {
-        left: -30px;
+        left: 10px;
     }
     
     .carousel-nav.next {
-        right: -30px;
+        right: 10px;
     }
 }
 
@@ -486,17 +488,21 @@
         font-size: 28px;
     }
     
-    /* Carousel responsive styles */
+    /* Updated carousel styles for smallest screens */
     .carousel-nav {
-        font-size: 16px;
         padding: 8px;
     }
     
+    .carousel-nav img {
+        height: 16px;
+    }
+    
+    /* Keep positions consistent on smallest screens */
     .carousel-nav.prev {
-        left: -25px;
+        left: 8px;
     }
     
     .carousel-nav.next {
-        right: -25px;
+        right: 8px;
     }
 }

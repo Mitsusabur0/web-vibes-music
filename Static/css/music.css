@@ -107,7 +107,15 @@
     .music-background {
         background-image: url('/Media/images/mobile/mobile-bg-doodle.jpg');
     }
+
+    /* Reduce iframe height on mobile devices */
+    .spotify-wrapper iframe {
+        height: 152px !important;
+    }
     
+    .music-container {
+        gap: 2rem;
+    }
 }
 
 @media (max-width: 480px) {

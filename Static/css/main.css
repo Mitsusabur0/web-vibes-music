@@ -9,3 +9,6 @@
 
 /* Import music page styles */
 @import 'music.css';
+
+/* Import gallery page styles */
+@import 'gallery.css';

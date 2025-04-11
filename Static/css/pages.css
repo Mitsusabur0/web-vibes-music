@@ -205,22 +205,19 @@
 /* ============================================= RESPONSIVE STYLES ===== */
 @media (max-width: 768px) {
 
-    /* Adjust gallery navigation for mobile */
-    .gallery-nav {
-        width: 30px;
-        height: 30px;
-        font-size: 16px;
-    }
-
     .home-page {
-        background-image: url('/Media/images/mobile/background_mobile.jpg');
+        background-image: url('/Media/images/mobile/mobile-bg-doodle.jpg');
         /* background-image: url('/Media/images/desktop/background_bio_desktop.jpg'); */
     }
 
     .bio-page {
-        background-image: url('/Media/images/mobile/background_mobile.jpg');
+        background-image: url('/Media/images/mobile/mobile-bg-doodle.jpg');
     }
     
+    .videos-page {
+        background-image: url('/Media/images/mobile/mobile-bg-doodle.jpg');
+    }
+
     .video-item {
         width: 90%;
     }
@@ -268,7 +265,6 @@
     }
 
     .bio-container h2,
-    .gallery-page h2,
     .videos-page h2 {
         font-size: 2rem;
     }

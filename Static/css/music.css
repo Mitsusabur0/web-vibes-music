@@ -103,6 +103,10 @@
     .music-item {
         width: 90%;
     }
+
+    .music-background {
+        background-image: url('/Media/images/mobile/mobile-bg-doodle.jpg');
+    }
     
 }
 

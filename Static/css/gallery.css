@@ -215,6 +215,52 @@
         width: 95%;
     }
     
+    /* Make the main image wider by removing side padding */
+    .gallery-item {
+        padding: 10px 0; 
+    }
+    
+    /* Hide the default positioned arrows */
+    .gallery-carousel > .carousel-nav {
+        display: none;
+    }
+    
+    /* Add a mobile-only navigation container after the carousel */
+    .gallery-carousel::after {
+        content: "";
+        display: block;
+        height: 10px; /* Spacer */
+    }
+    
+    /* Add mobile navigation buttons container */
+    .gallery-carousel {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Mobile-specific navigation container - will be added via JS */
+    .mobile-nav-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 10px 0;
+        gap: 20px;
+    }
+    
+    /* Style for mobile navigation buttons */
+    .mobile-nav-container .carousel-nav {
+        position: static;
+        transform: none;
+        margin: 0;
+    }
+    
+    /* Position the thumbnail container below the new nav arrows */
+    .thumbnail-container {
+        margin-top: 15px;
+    }
+    
     #lightbox-img {
         max-width: 90%;
     }
@@ -240,8 +286,8 @@
     }
     
     .thumbnail {
-        width: 20vw;
-        height: 50px;
+        width: 30vw;
+        height: 60px;
     }
 }
 
@@ -252,12 +298,6 @@
     
     .lightbox-caption h3 {
         font-size: 1.2rem;
-    }
-    
-    .thumbnail {
-        width: 60px;
-        width: 20vw;
-        height: 3rem;
     }
     
     .thumbnail-strip {

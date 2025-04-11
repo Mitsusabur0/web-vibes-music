@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let galleryData = []; // Will hold the image data from JSON
     let currentIndex = 0; // Current position in the gallery carousel
     let currentLightboxIndex = 0; // Current image index in lightbox
+    let isMobile = window.innerWidth <= 768; // Check if we're on mobile
 
     // Initialize the gallery
     initGallery();
@@ -33,6 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 galleryData = data; // Direct array, not nested under 'images'
                 renderGallery();
                 setupEventListeners();
+                // Set up mobile navigation if needed
+                if (isMobile) {
+                    setupMobileNavigation();
+                }
             })
             .catch(error => {
                 console.error('Error loading gallery data:', error);
@@ -77,6 +82,39 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
         renderGallery();
         setupEventListeners();
+        // Set up mobile navigation if needed
+        if (isMobile) {
+            setupMobileNavigation();
+        }
+    }
+
+    // Set up mobile-specific navigation
+    function setupMobileNavigation() {
+        // Create mobile navigation container
+        const mobileNavContainer = document.createElement('div');
+        mobileNavContainer.className = 'mobile-nav-container';
+        
+        // Clone the navigation buttons
+        const mobilePrevBtn = galleryConfig.prevButton.cloneNode(true);
+        const mobileNextBtn = galleryConfig.nextButton.cloneNode(true);
+        
+        // Add the buttons to the container
+        mobileNavContainer.appendChild(mobilePrevBtn);
+        mobileNavContainer.appendChild(mobileNextBtn);
+        
+        // Insert container after the carousel wrapper but before the thumbnail container
+        galleryConfig.carouselWrapper.after(mobileNavContainer);
+        
+        // Add event listeners to these new buttons
+        mobilePrevBtn.addEventListener('click', function() {
+            let index = (currentIndex - 1 + galleryData.length) % galleryData.length;
+            showItem(index);
+        });
+        
+        mobileNextBtn.addEventListener('click', function() {
+            let index = (currentIndex + 1) % galleryData.length;
+            showItem(index);
+        });
     }
 
     // Render the gallery images and thumbnails
@@ -176,6 +214,24 @@ document.addEventListener('DOMContentLoaded', function() {
             openLightbox(currentLightboxIndex + 1);
         }
     }
+
+    // Handle window resize to switch between mobile and desktop layouts
+    window.addEventListener('resize', function() {
+        const wasMobile = isMobile;
+        isMobile = window.innerWidth <= 768;
+        
+        // If changed from desktop to mobile
+        if (!wasMobile && isMobile) {
+            setupMobileNavigation();
+        }
+        // If changed from mobile to desktop
+        else if (wasMobile && !isMobile) {
+            const mobileNav = document.querySelector('.mobile-nav-container');
+            if (mobileNav) {
+                mobileNav.remove();
+            }
+        }
+    });
 
     // Setup all event listeners
     function setupEventListeners() {

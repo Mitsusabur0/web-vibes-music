@@ -85,14 +85,53 @@ main {
     width: 100%;
 } */
 
-.social-links {
+/* .social-links {
     display: flex;
     gap: 1rem;
 }
 
 .social-links a {
     font-size: 1.5rem;
+} */
+
+
+/* ===== SOCIAL ICONS STYLES ===== */
+.social-links {
+    display: flex;
+    gap: 1rem;
 }
+
+.social-icon {
+    height: auto;
+    width: 2.5vw;
+    transition: var(--transition);
+}
+
+.social-links a:hover .social-icon {
+    transform: scale(1.1);
+    opacity: 0.9;
+    filter: brightness(1.2);
+}
+
+/* Mobile social links styles */
+.social-links.mobile {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.social-links.mobile .social-icon {
+    height: 30px; /* Slightly larger for mobile touchpoints */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .social-links:not(.mobile) {
+        display: none;
+    }
+}
+
+
 
 .hamburger {
     display: none;

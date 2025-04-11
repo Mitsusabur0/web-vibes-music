@@ -71,5 +71,7 @@ img {
 }
 
 .hidden {
-    visibility: hidden;
+    /* visibility: hidden; */
+    width: 13vw;
+    height: 10px;
 }

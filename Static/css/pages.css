@@ -26,6 +26,11 @@
     transition: opacity 0.5s ease;
 }
 
+.hidden-placeholder {
+    width: 14.6vw;
+    visibility: hidden;
+}
+
 /* ============================================= BIO PAGE ===== */
 .bio-page {
     background-image: url('/Media/images/desktop/bg-bio.jpg');

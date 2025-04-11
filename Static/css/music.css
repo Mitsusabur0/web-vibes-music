@@ -93,45 +93,6 @@
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); */
 }
 
-/* Platforms section - not scrollable */
-.music-platforms {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    align-items: center;
-    width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.music-platforms h3 {
-    /* margin-bottom: 1rem; */
-    font-size: 1.5rem;
-}
-
-.platform-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-}
-
-.platform-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--overlay-dark);
-    border-radius: 50px;
-    font-weight: 500;
-    transition: var(--transition);
-}
-
-.platform-link:hover {
-    background-color: var(--accent-color);
-    color: var(--text-light);
-}
 
 /* ===== MUSIC-SPECIFIC RESPONSIVE STYLES ===== */
 @media (max-width: 768px) {
@@ -143,25 +104,11 @@
         width: 90%;
     }
     
-    .platform-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.7rem;
-    }
 }
 
 @media (max-width: 480px) {
     .music-content-container {
         height: calc(100vh - 130px);
         width: 95%;
-    }
-    
-    .music-platforms h3 {
-        font-size: 1.3rem;
-    }
-    
-    .platform-link {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
     }
 }

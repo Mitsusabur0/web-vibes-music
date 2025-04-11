@@ -267,21 +267,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    /**
-     * Filter gallery items by category
-     * @param {string} category - The category to filter by
-     */
-    function filterGallery(category) {
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        
-        galleryItems.forEach(item => {
-            if (category === 'all' || item.classList.contains(category)) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    }
+        /**
+         * Filter gallery items by category
+         * @param {string} category - The category to filter by
+         */
+        function filterGallery(category) {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
     
     /**
      * Fallback for browsers that don't support IntersectionObserver

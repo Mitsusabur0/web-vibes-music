@@ -258,9 +258,33 @@
 }
 
 /* ============================================= RESPONSIVE STYLES ===== */
+
+/* ===== MOBILE TITLE STYLES ===== */
+.mobile-title {
+    display: none; /* Hidden by default on desktop */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.title-img-mobile {
+    height: 3rem;
+    width: auto;
+    margin: 0 auto;
+}
+
+
 @media (max-width: 768px) {
     .title-img {
         margin-top: 0;
+    }
+
+    .mobile-title {
+        display: block; /* Show on mobile */
+        margin-top: 1rem;
+    }
+
+    .page-content {
+        /* padding: 0; */
     }
 
     .home-page {

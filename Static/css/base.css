@@ -216,32 +216,28 @@ section {
         overflow-y: auto;
     }
     
-    section, .home-page, .bio-page {
+    section {
         position: relative;
         min-height: 100vh;
         height: auto;
-        background-attachment: scroll;
     }
     
-    .gallery-page, .videos-page, .music-page {
-        position: absolute; /* Changed from fixed for mobile */
-    }
+    /* DO NOT override the fixed positioning for any page background */
+    /* The backgrounds for all pages should stay fixed in the viewport */
     
     main {
         overflow-y: visible;
         padding-top: 73px;
         padding-bottom: 80px;
+        position: relative;
+        z-index: 1;
     }
     
+    /* Footer styling - ensure it stays truly transparent on mobile */
     .main-footer {
-        position: relative;
-    }
-
-    /* Fix for mobile background issue */
-    .home-page, .bio-page {
-        background-attachment: scroll; /* Change from fixed to scroll for mobile */
-        background-position: center top;
-        background-size: cover;
+        position: relative; /* Change from fixed for mobile scrolling */
+        background-color: rgba(0, 0, 0, 0) !important;
+        z-index: 100;
     }
 
     /* Mobile navbar styles */
@@ -312,7 +308,7 @@ section {
 
 @media (max-width: 480px) {
     .page-content {
-        padding: 0;
+        padding: 5rem 1rem;
     }
     
     .nav-container {
